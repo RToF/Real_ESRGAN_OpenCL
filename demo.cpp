@@ -12,7 +12,7 @@ int main() {
     real_esrgan model(32, 3, 64);
     model.load(loader);
     // --------------------------- 读取图片 ---------------------------------//
-    cv::Mat img = cv::imread("/home/scz/Pictures/2.jpeg", cv::IMREAD_COLOR);
+    cv::Mat img = cv::imread("Your img path", cv::IMREAD_COLOR);
     cv::cvtColor(img, img, cv::COLOR_BGR2RGB);
     img.convertTo(img, CV_32F, 1.0 / 255);
 
@@ -44,7 +44,7 @@ int main() {
     cv::cvtColor(out, out, cv::COLOR_BGR2RGB);
     out.convertTo(out, CV_8UC3, 255);
 
-    if (!cv::imwrite("../1_cl.jpeg", out)) {
+    if (!cv::imwrite("Save path", out)) {
         std::cerr << "图像保存失败!" << std::endl;
         return -1;
     }
