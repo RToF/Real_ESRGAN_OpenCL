@@ -203,7 +203,7 @@ namespace layer{
 
         // TODO:设置防止超过上限
         // 设置work_item和work_group
-        size_t indexSpaceSize[1] = {out_size};//所有group的item
+        size_t indexSpaceSize[1] = {1024};//所有group的item
         size_t workGroupSize[1] = {static_cast<size_t>(out_c)};//每个group的item
 //        if (out_size )
 
