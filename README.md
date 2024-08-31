@@ -1,49 +1,27 @@
 ## 目录
-
 - [简介](#简介)
-- [功能](#功能)
-- [使用方法](#使用方法)
+- [测试](#测试)
 
 ## 简介
-
+- **OpenCL**  
+- **采用HWC内存布局**  
+- **Real-ESRGAN超分模型**
 ```plaintext
-- bin
+|── core/
+│   ├── include                 所有头文件
+│   ├── cl_context              OpenCL的配置以及一些全局设置
+│   ├── memory                  
+│         ├── manager.cpp       所有申请的内存都在此进行管理与释放
+│         └── tensor.cpp        输入以及输出均用tensor表示，默认是In-place的
+│   ├─── model  
+│         ├── loader.cpp        模型权重加载器
+│         └── real_esrgan.cpp   定义模型结构
+│   ├─── op                     
+│         ├── common            基础算子
+│         ├── conv              卷积算子
+│         └── upsampler         上采样算子
+│   └── CMakeLists.txt     
 ```
-## 功能
 
-- 列出项目的主要功能和特色。
-- 说明每个功能的用途和效果。
+## 测试
 
-## 安装
-
-### 系统要求
-
-列出项目运行所需的系统要求（例如操作系统、软件版本等）。
-
-### 安装步骤
-
-1. 克隆仓库：
-    ```bash
-    git clone https://github.com/username/repository.git
-    ```
-2. 进入项目目录：
-    ```bash
-    cd repository
-    ```
-3. 安装依赖：
-    ```bash
-    # 例如：使用 pip 安装 Python 依赖
-    pip install -r requirements.txt
-    ```
-
-4. 其他必要的安装步骤（如配置文件、数据库设置等）。
-
-## 使用方法
-
-提供项目的基本用法示例，帮助用户快速上手。可以包括命令行示例、代码片段或使用说明。
-
-例如：
-
-```bash
-# 运行主程序
-python main.py
