@@ -8,7 +8,7 @@
 
 int main() {
     // --------------------------- 加载权重 ---------------------------------//
-    Loader loader("../real_esrgan_param.bin");
+    Loader loader("../weights/real_esrgan_param.bin");
     real_esrgan model(32, 3, 64);
     model.load(loader);
     // --------------------------- 读取图片 ---------------------------------//
