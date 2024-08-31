@@ -43,7 +43,7 @@
     model.forward(x);
 ```
 
-4. 对结果进行的操作（以保存图片为例）
+4. 读取结果到Host端
 ```c++
     size_t buffers_size = x.w() * x.h() * x.c() * sizeof(INPUT_TYPE);
 
@@ -52,17 +52,6 @@
 
     // 从 OpenCL 缓冲区读取数据
     clEnqueueReadBuffer(ctx::config.commandQueue, x.data(), CL_TRUE, 0, buffers_size, hostData, 0, NULL, NULL);
-    cv::Mat out(x.h(), x.w(), CV_32FC3, hostData);
-    cv::cvtColor(out, out, cv::COLOR_BGR2RGB);
-    out.convertTo(out, CV_8UC3, 255);
-    
-    if (!cv::imwrite("../1_cl.jpeg", out)) {
-        std::cerr << "图像保存失败!" << std::endl;
-        return -1;
-    }
-    
-    std::cout << "图像保存成功!" << std::endl;
-
 ```
 ## 测试
 
