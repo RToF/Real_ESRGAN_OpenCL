@@ -9,6 +9,8 @@ namespace manager{
 #ifdef MANAGER_DEBUG
     int buffer::release_num = 1;
     int Manager::create_num = 1;
+    unsigned int Manager::max_mem = 0;
+    unsigned int Manager::cur_mem = 0;
 #endif
 
     Manager allocator; //全局内存分配器
@@ -28,6 +30,9 @@ namespace manager{
         }
         ptr = nullptr;
         owner = nullptr;
+#ifdef MANAGER_DEBUG
+        Manager::cur_mem -= bs;
+#endif
     }
         //移动构造
     buffer::buffer(buffer&& other) noexcept
@@ -62,7 +67,11 @@ namespace manager{
 
     Manager::Manager(){storage.reserve(RESERVED_BUFFER_NUM);}  // 先预留空间
 
-    Manager::~Manager()=default;
+    Manager::~Manager() {
+#ifdef MANAGER_DEBUG
+        std::cout << "max_mem: " << max_mem << std::endl;
+#endif
+    };
 
     buffer* Manager::get(size_t size, buffer** owner){
         // 先从storage里找
@@ -109,6 +118,11 @@ namespace manager{
         // 没找到或是不满足就直接分配
         storage.emplace_back(size, owner);
 #ifdef MANAGER_DEBUG
+        cur_mem += size;
+        if (max_mem < cur_mem){
+            max_mem = cur_mem;
+        }
+
         std::cout << "create " << create_num++ << "th buffer in " << owner << std::endl;
 #endif
         return &storage.back();
