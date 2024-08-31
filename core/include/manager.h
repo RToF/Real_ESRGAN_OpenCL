@@ -31,12 +31,14 @@ namespace manager{
 
     class Manager {
     private:
-#ifdef MANAGER_DEBUG
-        static int create_num;// 统计创建了多少个buffer
-#endif
         // TODO:把模型的buffer和其他的buffer分开，模型的一般不会被释放，加快检索速度
         std::vector<buffer> storage; // RAII自动析构释放里面的buffer
     public:
+#ifdef MANAGER_DEBUG
+        static int create_num;              // 统计创建了多少个buffer
+        static unsigned int max_mem;        // 统计最大使用中内存开销
+        static unsigned int cur_mem;        // 统计当前使用中内存开销
+#endif
         Manager();  // 先预留空间
         ~Manager();
 
