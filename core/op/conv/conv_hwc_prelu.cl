@@ -20,7 +20,6 @@ __kernel void Conv2d_prelu(
     // 这里定义了固定大小的局部内存
     __local float local_data[BLOCK_SIZE * BLOCK_SIZE * MAX_CHANNELS];
 
-    // 其他代码部分保持不变
     unsigned int idx = get_global_id(0);
     size_t global_items_sum = get_global_size(0);
     short pad_value = 0;
