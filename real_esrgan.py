@@ -72,7 +72,7 @@ class SRVGGNetCompact(nn.Module):
 
 if __name__ == '__main__':
     model = SRVGGNetCompact(num_in_ch=3, num_out_ch=3, num_feat=64, num_conv=32, upscale=4, act_type='prelu')
-    # ------------------------------------------------------------- #
+    # ---------------------------------------------------------------------- #
     loadnet = torch.load('SRVGGNetCompact.pth', map_location=torch.device('cpu'))
     model.load_state_dict(loadnet, True)
     # ------------------------ 读取官方pth并导出 ----------------------------- #
@@ -98,8 +98,8 @@ if __name__ == '__main__':
     # # 提取权重并保存到二进制文件
     # weights = extract_weights(model)
     # weights.tofile('real_esrgan_param.bin')
-    # ------------------------------------------------------------- #
-    img = cv2.imread('/home/scz/Pictures/1.jpeg', cv2.IMREAD_ANYCOLOR)
+    # ---------------------------------------------------------------------- #
+    img = cv2.imread('Your img path', cv2.IMREAD_ANYCOLOR)
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     x = torch.from_numpy(img).float()/255
     if img is None:
@@ -109,7 +109,7 @@ if __name__ == '__main__':
         print("Image depth: ", img.dtype)
         print("Number of channels: ", img.shape[2] if len(img.shape) == 3 else 1)
     x = x.permute(2,0,1).unsqueeze(0)
-    # ------------------------------------------------------------- #
+    # ---------------------------------------------------------------------- #
 
     # 假设 model 和 x 已经定义并初始化
     start_time = time.time()  # 记录开始时间
@@ -128,4 +128,4 @@ if __name__ == '__main__':
     y = (y * 255).astype(np.uint8)
 
     # 保存图像
-    cv2.imwrite('./1_py.jpeg', cv2.cvtColor(y, cv2.COLOR_RGB2BGR))
+    cv2.imwrite('Save path', cv2.cvtColor(y, cv2.COLOR_RGB2BGR))
