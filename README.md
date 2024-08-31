@@ -4,7 +4,7 @@
 - [测试](#测试)
 
 ## 简介
-- **OpenCL**  
+- **OpenCL算子**  
 - **HWC内存布局**  
 - **Real-ESRGAN超分模型**
 ```plaintext
