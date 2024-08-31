@@ -4,7 +4,7 @@
 
 ## 简介
 - **OpenCL**  
-- **采用HWC内存布局**  
+- **HWC内存布局**  
 - **Real-ESRGAN超分模型**
 ```plaintext
 |── core/
