@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(convert)
+project(demo)
 
 find_package(OpenCL REQUIRED)
 find_package(OpenCV REQUIRED)
