@@ -73,7 +73,7 @@ class SRVGGNetCompact(nn.Module):
 if __name__ == '__main__':
     model = SRVGGNetCompact(num_in_ch=3, num_out_ch=3, num_feat=64, num_conv=32, upscale=4, act_type='prelu')
     # ---------------------------------------------------------------------- #
-    loadnet = torch.load('./weight/SRVGGNetCompact.pth', map_location=torch.device('cpu'))
+    loadnet = torch.load('./weights/SRVGGNetCompact.pth', map_location=torch.device('cpu'))
     model.load_state_dict(loadnet, True)
     # ------------------------ 读取官方pth并导出 ----------------------------- #
     # model = SRVGGNetCompact(num_in_ch=3, num_out_ch=3, num_feat=64, num_conv=32, upscale=4, act_type='prelu')
