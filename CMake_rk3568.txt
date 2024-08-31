@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(convert)
+project(rk3568_SR)
 
 link_directories(/usr/lib/aarch64-linux-gnu)
 find_package(OpenCV REQUIRED)
