@@ -1,6 +1,7 @@
 ## 目录
 - [简介](#简介)
 - [使用步骤](#使用步骤)
+- [注意事项](#注意事项)
 
 ## 简介
 - **OpenCL算子**  
@@ -52,3 +53,6 @@
     // 从 OpenCL 缓冲区读取数据
     clEnqueueReadBuffer(ctx::config.commandQueue, x.data(), CL_TRUE, 0, buffers_size, hostData, 0, NULL, NULL);
 ```
+
+## 注意事项
+- 若是在板端运行时卡住请调整core/include/conv中的indexSpaceSize大小，在RK3568设置为1024可以正常运行
