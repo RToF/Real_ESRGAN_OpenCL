@@ -1,7 +1,6 @@
 ## 目录
 - [简介](#简介)
 - [使用步骤](#使用步骤)
-- [测试](#测试)
 
 ## 简介
 - **OpenCL算子**  
@@ -53,5 +52,3 @@
     // 从 OpenCL 缓冲区读取数据
     clEnqueueReadBuffer(ctx::config.commandQueue, x.data(), CL_TRUE, 0, buffers_size, hostData, 0, NULL, NULL);
 ```
-## 测试
-
