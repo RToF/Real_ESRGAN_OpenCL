@@ -13,7 +13,7 @@
 |   ├── cl_context              OpenCL的配置以及一些全局设置
 |   ├── memory                  
 |   │   ├── manager.cpp         所有申请的内存都在此进行管理与释放
-|   │   └── tensor.cpp          输入以及输出均用tensor表示
+|   │   └── tensor.cpp          输入以及输出均用tensor表示(默认In-place)
 |   ├── model  
 |   │   ├── loader.cpp          模型权重加载器
 |   │   └── real_esrgan.cpp     定义模型结构
