@@ -55,7 +55,7 @@
     // 从 OpenCL 缓冲区读取数据
     clEnqueueReadBuffer(ctx::config.commandQueue, x.data(), CL_TRUE, 0, buffers_size, hostData, 0, NULL, NULL);
 ```
-## 模型
+## 模型搭建
 ```c++
 class real_esrgan {
 private:
