@@ -76,7 +76,7 @@ private:
 public:
     real_esrgan(unsigned char body_num, short c, short mid_c, short ks=3, short _scale = 4);
 
-    void load(Loader& loader){          // 实现加载权重的逻辑
+    void load(Loader& loader){          // 依次加载
 
         for (auto& layer: body){
             layer.load(loader);
@@ -85,7 +85,7 @@ public:
         tail.load(loader);
     }
 
-    void forward(tensor& input){        // 实现推理的逻辑
+    void forward(tensor& input){        // 依次推理
         tensor base = input;
         
         for (auto& layer: body){
