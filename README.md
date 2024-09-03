@@ -4,8 +4,8 @@
 - [注意事项](#注意事项)
 
 ## 简介
-- **OpenCL算子**  
-- **HWC内存布局**  
+- **OpenCL封装**  
+- **HWC格式算子**  
 - **Real-ESRGAN超分模型**
 ```plaintext
 |── core/
