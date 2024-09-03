@@ -65,7 +65,7 @@
 |       ├── PixelShuffle      
 |       └── Interpolate
 ```
-## 模型搭建
+## 模型
 ```c++
 class real_esrgan {
 private:
@@ -75,8 +75,26 @@ private:
     layer::Interpolate<INPUT_TYPE> upsampler2;
 public:
     real_esrgan(unsigned char body_num, short c, short mid_c, short ks=3, short _scale = 4);
-    void load(Loader& loader);
-    void forward(tensor& input);
+    void load(Loader& loader){          // 实现加载权重的逻辑
+
+        for (auto& layer: body){
+            layer.load(loader);
+        }
+
+        tail.load(loader);
+    }
+    void forward(tensor& input){        // 实现推理的逻辑
+        tensor base = input;
+        
+        for (auto& layer: body){
+            layer.forward(input);
+        }
+    
+        tail.forward(input);
+        upsampler1.forward(input);
+        upsampler2.forward(base);
+        input.add(base);
+    }
 ```
 };
 ## 注意事项
