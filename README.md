@@ -1,8 +1,8 @@
 ## 目录
 - [简介](#简介)
 - [使用步骤](#使用步骤)
-- [继承关系](#继承关系)
 - [模型搭建](#模型搭建)
+- [继承关系](#继承关系)
 - [注意事项](#注意事项)
 
 ## 简介
@@ -55,16 +55,6 @@
     // 从 OpenCL 缓冲区读取数据
     clEnqueueReadBuffer(ctx::config.commandQueue, x.data(), CL_TRUE, 0, buffers_size, hostData, 0, NULL, NULL);
 ```
-## 继承关系
-```plaintext
-|── BaseLayer
-|   ├── Conv2d                  
-|   │   ├── Conv2d_prelu 
-|   │   └── Conv2d_leaky_relu         
-|   └── UpSampler  
-|       ├── PixelShuffle      
-|       └── Interpolate
-```
 ## 模型
 ```c++
 class real_esrgan {
@@ -97,6 +87,16 @@ public:
         upsampler2.forward(base);
         input.add(base);
     }
+```
+## 继承关系
+```plaintext
+|── BaseLayer
+|   ├── Conv2d                  
+|   │   ├── Conv2d_prelu 
+|   │   └── Conv2d_leaky_relu         
+|   └── UpSampler  
+|       ├── PixelShuffle      
+|       └── Interpolate
 ```
 };
 ## 注意事项
