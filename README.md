@@ -63,7 +63,6 @@
 |   └── UpSampler  
 |       ├── PixelShuffle      
 |       └── Interpolate
- 
 ```                  
 ## 注意事项
 - 若是在板端运行时卡住请调整core/include/conv中的indexSpaceSize大小，在RK3568设置为1024可以正常运行
