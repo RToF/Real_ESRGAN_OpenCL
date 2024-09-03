@@ -9,13 +9,13 @@
 namespace layer{
 
     template <typename T>
-    class baseSampler: public baseLayer<T>{
+    class UpSampler: public baseLayer<T>{
     private:
         bool channel_chaned; // 是否会改变通道
         unsigned char scale;
     public:
-        baseSampler()=delete;
-        baseSampler(unsigned char _scale, short inc = 0): baseLayer<T>(inc), scale(_scale){}
+        UpSampler()=delete;
+        UpSampler(unsigned char _scale, short inc = 0): baseLayer<T>(inc), scale(_scale){}
 
         void set_channel_changed(bool c){
             channel_chaned = c;
@@ -100,20 +100,20 @@ namespace layer{
     };
 
     template <typename T>
-    class PixelShuffle: public baseSampler<T>{
+    class PixelShuffle: public UpSampler<T>{
     public:
         PixelShuffle()=delete;
-        PixelShuffle(unsigned char _scale, short _in_c): baseSampler<T>(_scale, _in_c){
+        PixelShuffle(unsigned char _scale, short _in_c): UpSampler<T>(_scale, _in_c){
             this->set_op(ctx::config.ops_dict["PixelShuffle"]);
             this->set_channel_changed(true);
         }
     };
 
     template <typename T>
-    class Interpolate: public baseSampler<T>{
+    class Interpolate: public UpSampler<T>{
     public:
         Interpolate()=delete;
-        Interpolate(unsigned char _scale): baseSampler<T>(_scale){
+        Interpolate(unsigned char _scale): UpSampler<T>(_scale){
             this->set_op(ctx::config.ops_dict["Interpolate"]);
             this->set_channel_changed(false);
         }
