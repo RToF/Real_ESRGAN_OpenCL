@@ -76,7 +76,7 @@ private:
 public:
     real_esrgan(unsigned char body_num, short c, short mid_c, short ks=3, short _scale = 4);
 
-    void load(Loader& loader){          // 依次加载
+    void load(Loader& loader){          // 依次加载权重
 
         for (auto& layer: body){
             layer.load(loader);
