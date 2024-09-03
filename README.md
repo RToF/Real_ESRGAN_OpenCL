@@ -2,6 +2,7 @@
 - [简介](#简介)
 - [使用步骤](#使用步骤)
 - [继承关系](#继承关系)
+- [模型搭建](#模型搭建)
 - [注意事项](#注意事项)
 
 ## 简介
@@ -63,6 +64,20 @@
 |   └── UpSampler  
 |       ├── PixelShuffle      
 |       └── Interpolate
-```                  
+```
+## 模型搭建
+```c++
+class real_esrgan {
+private:
+    std::vector<layer::Conv2d_prelu<MODEL_TYPE>> body;
+    layer::Conv2d<MODEL_TYPE> tail;
+    layer::PixelShuffle<INPUT_TYPE> upsampler1;
+    layer::Interpolate<INPUT_TYPE> upsampler2;
+public:
+    real_esrgan(unsigned char body_num, short c, short mid_c, short ks=3, short _scale = 4);
+    void load(Loader& loader);
+    void forward(tensor& input);
+```
+};
 ## 注意事项
 - 若是在板端运行时卡住请调整core/include/conv中的indexSpaceSize大小，在RK3568设置为1024可以正常运行
