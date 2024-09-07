@@ -6,7 +6,7 @@
 - [注意事项](#注意事项)
 
 ## 简介
-- **OpenCL封装**  
+- **OpenCL推理框架**  
 - **HWC格式算子**  
 - **Real-ESRGAN超分模型**
 ```plaintext
