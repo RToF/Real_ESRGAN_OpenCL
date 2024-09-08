@@ -2,7 +2,6 @@
 - [简介](#简介)
 - [使用步骤](#使用步骤)
 - [模型搭建](#模型搭建)
-- [继承关系](#继承关系)
 - [注意事项](#注意事项)
 - [TODO](#todo)
 
@@ -90,16 +89,7 @@ public:
         input.add(base);
     }
 ```
-## 继承关系
-```plaintext
-|── BaseLayer
-|   ├── Conv2d                  
-|   │   ├── Conv2d_prelu 
-|   │   └── Conv2d_leaky_relu         
-|   └── UpSampler  
-|       ├── PixelShuffle      
-|       └── Interpolate
-```
+
 ## 注意事项
 - 若是在板端运行时卡住请调整core/include/conv中的indexSpaceSize大小，在RK3568设置为1024可以正常运行
   
