@@ -104,8 +104,9 @@ public:
 - 若是在板端运行时卡住请调整core/include/conv中的indexSpaceSize大小，在RK3568设置为1024可以正常运行
   
 ## TODO
-- [ ] 向量化优化
 - [ ] Winograd卷积加速
-- [ ] 利用DFS构建计算图
-- [ ] 解析并导入导出ONNX模型
+- [ ] DFS构建计算图
+- [ ] 算子的并发调度
+- [ ] 增加ONNX解析与导出
+
 
