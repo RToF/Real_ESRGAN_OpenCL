@@ -86,7 +86,10 @@ if __name__ == '__main__':
     #
     #     for name, param in model.named_parameters():
     #         if 'weight' in name:
-    #             weight = param.detach().cpu().numpy()
+    #             if len(param.shape) == 4:
+    #                 weight = param.permute(2,3,1,0).detach().cpu().numpy()
+    #             else:
+    #                 weight = param.detach().cpu().numpy()
     #             all_weights.append(weight.flatten())
     #         elif 'bias' in name:
     #             bias = param.detach().cpu().numpy()
