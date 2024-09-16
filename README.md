@@ -33,7 +33,7 @@
 ## Test
 | Inference Framework       | Device       | Inference Speed (ms) |Peak Memory Usage (MB) |			
 |------------|----------|----------|------------|
-| Ours       | Mali-G52 | 1368     | 364.0     |
+| Ours       | Mali-G52 | 1368     | -     |
 | Ours       | 4070ti   | 243      | 74.6     |
 | Pytorch    | 4070ti   | 192      | 72.3     |
 - Note: The results only reflect inference time, excluding image preprocessing and postprocessing.
