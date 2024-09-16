@@ -1,9 +1,10 @@
 ## Table of Contents
 - [Introduction](#introduction)
+- [Test](#test)
 - [Usage Steps](#usage-steps)
 - [Model Setup](#model-setup)
 - [Notes](#notes)
-- [TODO](#todo)
+- [Todo](#todo)
 
 ## Introduction
 - **OpenCL Inference Framework**  
@@ -29,6 +30,13 @@
 |── real_esrgan_param.bin       Model binary weights
 |── SRVGGNetCompact.pth         PyTorch model weights
 ```
+## Test
+| Inference Framework       | Device       | Inference Speed (ms) |Peak Memory Usage (MB) |			
+|------------|----------|----------|------------|
+| Ours       | Mali-G52 | 1368     | 364.0     |
+| Ours       | 4070ti   | 243      | 74.6     |
+| Pytorch    | 4070ti   | 192      | 72.3     |
+- Note: The results only reflect inference time, excluding image preprocessing and postprocessing.
 ## Usage Steps
 1. Load weights into the model
 ```c++
@@ -93,7 +101,7 @@ public:
 ## Notes
 - If the system hangs during execution, adjust the indexSpaceSize in core/include/conv to 1024 for RK3568 to run properly.
   
-## TODO
+## Todo
 - [ ] Winograd convolution acceleration
 - [ ] DFS for computation graph construction(深度优先算法构建计算图)
 - [ ] Concurrent scheduling of operators(算子并行调度)
