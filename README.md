@@ -96,7 +96,7 @@ public:
 ## TODO
 - [ ] Winograd convolution acceleration
 - [ ] DFS for computation graph construction(深度优先算法构建计算图)
-- [ ] Concurrent scheduling of operators(根据计算图实现算子并行调度)
+- [ ] Concurrent scheduling of operators(算子并行调度)
 - [ ] Write unit tests with GTest
 - [ ] Add ONNX parsing and exporting
 
