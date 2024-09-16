@@ -31,6 +31,9 @@
 |── SRVGGNetCompact.pth         PyTorch model weights
 ```
 ## Test
+Test image binary depth: 5  
+Test image channels: 3  
+Test image size: 474x289  
 | Inference Framework       | Device       | Inference Speed (ms) |Peak Memory Usage (MB) |			
 |------------|----------|----------|------------|
 | Ours       | Mali-G52 | 1368     | -     |
