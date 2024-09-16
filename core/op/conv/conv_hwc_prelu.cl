@@ -63,9 +63,9 @@ __kernel void Conv2d_prelu(
                     // 卷积核的哪一个位置
                     kernel_pos = mid_kernel_idx + offset_y * ks + offset_x;
                     // 对应输出通道的起始位置
-                    weight_out = weight + c * in_c * ks * ks;
+                    weight_out = weight + out_c * in_c * kernel_pos;
                     // 对应哪一个输入通道的卷积核
-                    weight_value = weight_out[in_channel * ks * ks + kernel_pos];
+                    weight_value = weight_out[c + out_c * in_channel];
 
                     // 找到位置
                     correspond_x = stride * x + offset_x;
