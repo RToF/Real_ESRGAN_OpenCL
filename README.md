@@ -106,11 +106,11 @@ public:
 ```
 
 ## Notes
-- If the system hangs during execution, adjust the indexSpaceSize in core/include/conv to a constant.
+- If the system hangs during execution, adjust the indexSpaceSize in core/include/conv.h to a constant.
   
 ## Todo
 - [ ] Winograd convolution acceleration
-- [ ] DFS for computation graph construction(深度优先算法构建计算图)
+- [ ] DFS for computation graph construction(构建计算图)
 - [ ] Concurrent scheduling of operators(算子并行调度)
 - [ ] Write unit tests with GTest
 - [ ] Add ONNX parsing and exporting
