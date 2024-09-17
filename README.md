@@ -36,12 +36,12 @@ Test image channels: 3
 Test image size: 474x289  
 | Inference Framework       | Device       | Inference Speed (ms) |Peak Memory Usage (MB) |			
 |------------|----------|----------|------------|
-| Ours       | Mali-G52(indexSpaceSize=1024) | 1568     | -     |
-| Ours       | Mali-G52(indexSpaceSize=2048) | 821     | -     |
-| Ours       | Mali-G52(indexSpaceSize=4096) | 569     | -     |
-| Ours       | 4070ti   | 178      | 74.6     |
-| Pytorch    | i5-13400   | 1635      | -     |
-| Pytorch    | 4070ti   | 196      | 72.3     |
+| Ours    | Mali-G52(Total Items=1024) | 1568     | -     |
+| Ours    | Mali-G52(Total Items=2048) | 821     | -     |
+| Ours    | Mali-G52(Total Items=4096) | 569     | -     |
+| Ours    | 4070ti   | 178      | 74.6     |
+| Pytorch | i5-13400   | 1635      | -     |
+| Pytorch | 4070ti   | 196      | 72.3     |
 
 - Note: The results only reflect inference time, excluding image preprocessing and postprocessing.
 ## Usage Steps
