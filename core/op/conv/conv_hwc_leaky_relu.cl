@@ -23,7 +23,7 @@ __kernel void Conv2d_leaky_relu(
     size_t global_items_sum = get_global_size(0);   // 总共的items数量
     //printf("global_items_sum:%d\n",global_items_sum);
 
-    short pad_value = 0;
+    //short pad_value = 0;
 
     char half_ks = (ks -1)/2;                       // 必须是整数
     char mid_kernel_idx = half_ks * ks + half_ks;   // 卷积核在整个卷积中的索引位置(单通道)
@@ -70,8 +70,8 @@ __kernel void Conv2d_leaky_relu(
                     // 所对应在输入图像的索引(卷积核中心)
                     correspond_idx = in_channel + correspond_y * in_w * in_c + correspond_x * in_c;
 
-                    if( correspond_y < 0 || correspond_y >= in_h) { result += pad_value * weight_value; continue;}  // 判断是否是pad部分
-                    if( correspond_x < 0 || correspond_x >= in_w) { result += pad_value * weight_value; continue;}  // 判断是否是pad部分
+                    if( correspond_y < 0 || correspond_y >= in_h) { continue;}  // 判断是否是pad部分
+                    if( correspond_x < 0 || correspond_x >= in_w) { continue;}  // 判断是否是pad部分
 
                     result += weight_value * data[correspond_idx];
                 }
