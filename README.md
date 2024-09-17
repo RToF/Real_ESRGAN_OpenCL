@@ -37,9 +37,9 @@ Test image size: 474x289
 | Inference Framework       | Device       | Inference Speed (ms) |Peak Memory Usage (MB) |			
 |------------|----------|----------|------------|
 | Ours       | Mali-G52 | 1368     | -     |
-| Ours       | 4070ti   | 243      | 74.6     |
+| Ours       | 4070ti   | 182      | 74.6     |
 | Pytorch    | i5-13400   | 1635      | -     |
-| Pytorch    | 4070ti   | 192      | 72.3     |
+| Pytorch    | 4070ti   | 189      | 72.3     |
 
 - Note: The results only reflect inference time, excluding image preprocessing and postprocessing.
 ## Usage Steps
