@@ -36,7 +36,9 @@ Test image channels: 3
 Test image size: 474x289  
 | Inference Framework       | Device       | Inference Speed (ms) |Peak Memory Usage (MB) |			
 |------------|----------|----------|------------|
-| Ours       | Mali-G52 | 1368     | -     |
+| Ours       | Mali-G52(indexSpaceSize=1024) | 1568     | -     |
+| Ours       | Mali-G52(indexSpaceSize=2048) | 821     | -     |
+| Ours       | Mali-G52(indexSpaceSize=4096) | 569     | -     |
 | Ours       | 4070ti   | 178      | 74.6     |
 | Pytorch    | i5-13400   | 1635      | -     |
 | Pytorch    | 4070ti   | 196      | 72.3     |
@@ -104,7 +106,7 @@ public:
 ```
 
 ## Notes
-- If the system hangs during execution, adjust the indexSpaceSize in core/include/conv to 1024 for RK3568 to run properly.
+- If the system hangs during execution, adjust the indexSpaceSize in core/include/conv to a constant.
   
 ## Todo
 - [ ] Winograd convolution acceleration
