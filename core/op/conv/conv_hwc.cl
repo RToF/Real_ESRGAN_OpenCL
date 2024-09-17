@@ -23,7 +23,7 @@ __kernel void Conv2d(
     size_t global_items_sum = get_global_size(0);   // 总共的items数量
     //printf("global_items_sum:%d\n",global_items_sum);
 
-    short pad_value = 0;
+//    short pad_value = 0;
 
     char half_ks = (ks -1)/2;                       // 必须是整数
     char mid_kernel_idx = half_ks * ks + half_ks;   // 卷积核在整个卷积中的索引位置(单通道)
@@ -64,14 +64,21 @@ __kernel void Conv2d(
                     // 对应哪一个输入通道的卷积核
                     weight_value = weight_out[c + out_c * in_channel];
 
+//                    // 卷积核的哪一个位置
+//                    kernel_pos = mid_kernel_idx + offset_y * ks + offset_x;
+//                    // 对应输出通道的起始位置
+//                    weight_out = weight + c * in_c * ks * ks;
+//                    // 对应哪一个输入通道的卷积核
+//                    weight_value = weight_out[in_channel * ks * ks + kernel_pos];
+
                     // 找到位置
                     correspond_x = stride * x + offset_x;
                     correspond_y = stride * y + offset_y;
                     // 所对应在输入图像的索引(卷积核中心)
                     correspond_idx = in_channel + correspond_y * in_w * in_c + correspond_x * in_c;
 
-                    if( correspond_y < 0 || correspond_y >= in_h) { result += pad_value * weight_value; continue;}  // 判断是否是pad部分
-                    if( correspond_x < 0 || correspond_x >= in_w) { result += pad_value * weight_value; continue;}  // 判断是否是pad部分
+                    if( correspond_y < 0 || correspond_y >= in_h) { continue;}  // 判断是否是pad部分
+                    if( correspond_x < 0 || correspond_x >= in_w) { continue;}  // 判断是否是pad部分
 
                     result += weight_value * data[correspond_idx];
                 }
