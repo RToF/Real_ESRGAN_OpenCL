@@ -113,8 +113,6 @@ if __name__ == '__main__':
         print("Number of channels: ", img.shape[2] if len(img.shape) == 3 else 1)
     x = x.permute(2,0,1).unsqueeze(0)
     # ---------------------------------------------------------------------- #
-
-    # 假设 model 和 x 已经定义并初始化
     start_time = time.time()  # 记录开始时间
 
     with torch.no_grad():  # 禁用梯度
@@ -124,7 +122,9 @@ if __name__ == '__main__':
     elapsed_time = end_time - start_time  # 计算时间差
 
     print(f"运行时间: {elapsed_time:.6f} 秒")
-
+    summary = torch.cuda.memory_summary(device=0, abbreviated=False)
+    print(summary)
+    # ------------------------------------------------------------- #
     y = y.squeeze(0).cpu()  # 去除批次维度，移动到CPU，并将像素值限制在[0, 1]范围内
     y = y.permute(1, 2, 0).numpy()  # 将通道维度移动到最后，并转换为NumPy数组
     # 将图像数据从[0, 1]范围恢复到[0, 255]范围，并转换为uint8类型
