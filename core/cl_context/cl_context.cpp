@@ -54,10 +54,22 @@ namespace ctx{
         ops_dict["Conv2d_prelu"] = build_kernel("../core/op/conv/conv_hwc_prelu.cl", "Conv2d_prelu");
         ops_dict["Conv2d_leaky_relu"] = build_kernel("../core/op/conv/conv_hwc_leaky_relu.cl", "Conv2d_leaky_relu");
 
+        ////////////////////////////////////////// Winograd //////////////////////////////////////////
+        ops_dict["GgGT"] = build_kernel("../core/op/conv/winograd63.cl", "GgGT");
+        ops_dict["ATMA"] = build_kernel("../core/op/conv/winograd63.cl", "ATMA");
+        ops_dict["UV"] = build_kernel("../core/op/conv/winograd63.cl", "UV");
+        ops_dict["tiles2img"] = build_kernel("../core/op/conv/winograd63.cl", "tiles2img");
+        ops_dict["BTdB"] = build_kernel("../core/op/conv/winograd63.cl", "BTdB");
+        ops_dict["img2tiles"] = build_kernel("../core/op/conv/winograd63.cl", "img2tiles");
+        ////////////////////////////////////////// Winograd //////////////////////////////////////////
+
         ops_dict["PixelShuffle"] = build_kernel("../core/op/upsampler/pixelshuffle_hwc.cl", "PixelShuffle");
         ops_dict["Interpolate"] = build_kernel("../core/op/upsampler/interpolate_hwc.cl", "Interpolate");
 
         ops_dict["Add"] = build_kernel("../core/op/common/add.cl", "Add");
+        ops_dict["gemm"] = build_kernel("../core/op/common/gemm.cl", "gemm");
+        ops_dict["img2col"] = build_kernel("../core/op/common/img2col_hwc.cl", "img2col");
+        ops_dict["weight2col"] = build_kernel("../core/op/common/weight2col_hwc.cl", "weight2col");
 
         std::cout << "------------------------------------------ kernel info ----------------------------------------------" << std::endl;
         kernel_info(ops_dict["Conv2d"], "Conv2d");
@@ -68,6 +80,9 @@ namespace ctx{
         kernel_info(ops_dict["Interpolate"], "Interpolate");
 
         kernel_info(ops_dict["Add"], "Add");
+        kernel_info(ops_dict["gemm"], "gemm");
+        kernel_info(ops_dict["img2col"], "img2col");
+        kernel_info(ops_dict["weight2col"], "weight2col");
         std::cout << "------------------------------------------ kernel info ----------------------------------------------" << std::endl;
         tensor::set_op(ctx::config.ops_dict["Add"]);
     }
