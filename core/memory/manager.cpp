@@ -17,7 +17,7 @@ namespace manager{
 
     buffer::buffer(size_t _size, buffer** _owner,bool _used): used(_used), bs(_size), owner(_owner){  //没有host数据的情况,先创建再往里面写
         cl_int err;
-        ptr = clCreateBuffer(ctx::config.context, CL_MEM_READ_ONLY, _size,
+        ptr = clCreateBuffer(ctx::config.context, CL_MEM_READ_WRITE, _size,
                              nullptr, &err);
         CHECK(err, "Error creating buffer in buffer(): ");
     }
