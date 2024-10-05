@@ -63,12 +63,6 @@ Test image size: 474x289
 
 4. Read results to Host
 ```c++
-    size_t buffers_size = x.w() * x.h() * x.c() * sizeof(INPUT_TYPE);
-
-    // Allocate host memory
-    auto *hostData = (unsigned char *) malloc(buffers_size);
-
-    // Read data from OpenCL buffer
     clEnqueueReadBuffer(ctx::config.commandQueue, x.data(), CL_TRUE, 0, buffers_size, hostData, 0, NULL, NULL);
 ```
 ## Model Setup
@@ -80,8 +74,6 @@ private:
     layer::PixelShuffle<INPUT_TYPE> upsampler1;
     layer::Interpolate<INPUT_TYPE> upsampler2;
 public:
-    real_esrgan(unsigned char body_num, short c, short mid_c, short ks=3, short _scale = 4);
-
     void load(Loader& loader){          // Load weights sequentially
 
         for (auto& layer: body){
@@ -101,13 +93,12 @@ public:
         tail.forward(input);
         upsampler1.forward(input);
         upsampler2.forward(base);
-        input.add(base);
+        input.add(base);                
     }
 ```
 
 ## Notes
 - If the system hangs during execution, adjust the indexSpaceSize in core/include/conv.h to a constant.
-  
 ## Todo
 - [x] Winograd convolution acceleration
 - [ ] DFS for computation graph construction(构建计算图)
