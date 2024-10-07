@@ -125,7 +125,7 @@ if __name__ == '__main__':
     summary = torch.cuda.memory_summary(device=0, abbreviated=False)
     print(summary)
     # ------------------------------------------------------------- #
-    y = y.squeeze(0).cpu()  # 去除批次维度，移动到CPU，并将像素值限制在[0, 1]范围内
+    y = y.squeeze(0).data.squeeze().float().cpu().clamp_(0, 1)  # 去除批次维度，移动到CPU，并将像素值限制在[0, 1]范围内
     y = y.permute(1, 2, 0).numpy()  # 将通道维度移动到最后，并转换为NumPy数组
     # 将图像数据从[0, 1]范围恢复到[0, 255]范围，并转换为uint8类型
     y = (y * 255).astype(np.uint8)
