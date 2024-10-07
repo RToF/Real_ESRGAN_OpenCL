@@ -343,7 +343,7 @@ __kernel void ATMA( __global float *M,        // [n,c,t,8,8]
         for (int c = 0; c < 6; c++){
             MA[lid][c] = result[c];
         }
-        barrier(CLK_LOCAL_MEM_FENCE);   //TODO:每个groups不到32个item，所以只有一个warp，必定同步
+        barrier(CLK_LOCAL_MEM_FENCE);
         // AT(MA),其中MA是8x6,每个item负责一行
         for(int col = 0; col < 6; col++){
             float data = MA[lid][col];
@@ -388,7 +388,7 @@ __kernel void tiles2img( __global float *Y,
         unsigned int rel_pos = row_t*6 + col_t;
         // 找到Y中对应输出通道的索引
         unsigned int data = n * inc * size_per_map;
-//        printf("%f",i);
+
         // 遍历每一个输入通道求和(此时tiles还没有合并)
         float sum=0.0f;
         for(int c = 0; c < inc; c++){
