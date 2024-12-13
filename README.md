@@ -1,10 +1,10 @@
 ## Table of Contents
-- [Introduction](#introduction)
-- [Test](#test)
-- [Usage Steps](#usage-steps)
-- [Model Setup](#model-setup)
-- [Notes](#notes)
-- [Todo](#todo)
+[Introduction](#introduction)  
+[Test](#test)  
+[Usage Steps](#usage-steps)  
+[Model Setup](#model-setup)  
+[Notes](#notes)  
+[Todo](#todo)  
 
 ## Introduction
 - **OpenCL Inference Framework**  
